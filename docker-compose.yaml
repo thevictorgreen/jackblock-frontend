@@ -5,6 +5,12 @@
 # docker-compose ps
 version: '3'
 services:
+  backend:
+    image: vdigital/skynet:v1
+    volumes:
+      - ./php:/var/www/html
+    ports:
+      - 8083:80
   frontend:
     image: nginx:1.13.3-alpine
     volumes:
