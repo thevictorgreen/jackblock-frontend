@@ -9,6 +9,7 @@
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
 
+   $service_url = 'http://blockchain:8000';
    $credentials = "privateblock:password";
 
    $curl = curl_init();
@@ -42,7 +43,7 @@
 
    //echo $decoded["result"]["nodeaddress"];
    //echo $decoded
-   
+
  }
 
 ?>
