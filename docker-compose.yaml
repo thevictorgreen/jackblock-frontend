@@ -1,16 +1,30 @@
-# docker-compose.yaml
-# docker-compose up -d
-# docker-compose stop
-# docker-compose start
-# docker-compose ps
 version: '3'
 services:
+  blockchain:
+    image: kunstmaan/master-multichain:latest
+    volumes:
+      - ./.multichain:/root/.multichain
+    environment:
+      - CHAINNAME=Skynet
+      - NETWORK_PORT=7447
+      - RPC_PORT=8000
+      - RPC_USER=privateblock
+      - RPC_PASSWORD=password
+      - RPC_ALLOW_IP=0.0.0.0/0.0.0.0
+    ports:
+      # JSON-RPC PORT
+      - 8000:8000
+      # BLOCKCHAIN PORT
+      - 7447:7447
   backend:
     image: vdigital/skynet:v1
     volumes:
       - ./php:/var/www/html
     ports:
+      # HTTP PORT
       - 8083:80
+    depends_on:
+      - blockchain
   frontend:
     image: nginx:1.13.3-alpine
     volumes:
