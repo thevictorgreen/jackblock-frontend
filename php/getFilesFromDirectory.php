@@ -1,15 +1,17 @@
 <?php
-$target_dir = "uploads/";
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-$dir = "http://".$_SERVER['SERVER_NAME']."/angular4/";
-$collection = array();
-/*
-$collection[] = array('title' => 'sdfsdf', 'artist' =>'dsfsdf');
-$collection[] = array('title' => 'dsfsdfs', 'artist' =>'dswdf');
-$collection[] = array('title' => 'ssdfsf', 'artist' =>'dwer');
-$collection[] = array('title' => 'sdsdfsd', 'artist' =>'dewrwedf');*/
-foreach(glob($target_dir . '*.*') as $filename){
+
+ $target_dir = "uploads/";
+ header('Access-Control-Allow-Origin: *');
+ header('Access-Control-Allow-Methods: GET, POST');
+ $dir = "http://".$_SERVER['SERVER_NAME'].":8083/";
+ $collection = array();
+
+ /*
+ $collection[] = array('title' => 'sdfsdf', 'artist' =>'dsfsdf');
+ $collection[] = array('title' => 'dsfsdfs', 'artist' =>'dswdf');
+ $collection[] = array('title' => 'ssdfsf', 'artist' =>'dwer');
+ $collection[] = array('title' => 'sdsdfsd', 'artist' =>'dewrwedf');*/
+ foreach(glob($target_dir . '*.*') as $filename){
     // echo $dir. $filename;
 	$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
 	$filename = explode("/",$filename)[1];
