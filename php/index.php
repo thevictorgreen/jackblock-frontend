@@ -7,6 +7,7 @@
   require './endpoints/replay.php';
   require './endpoints/getinfo.php';
   require './endpoints/liststreams.php';
+  require './endpoints/addjacker.php';
 
   // IMPORT
   require './vendor/autoload.php';
@@ -16,8 +17,9 @@
 
   // CONNECT ROUTES TO ENDPOINTS
   $app->get('/hello/{name}', replay);
-  $app->get('/getinfo', getinfo);
+  $app->get('/getinfoo', getinfo);
   $app->get('/liststreams', liststreams);
+  $app->post('/addjacker', addjacker);
 
 
 
