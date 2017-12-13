@@ -17,7 +17,7 @@
 
   // CONNECT ROUTES TO ENDPOINTS
   $app->get('/hello/{name}', replay);
-  $app->get('/getinfoo', getinfo);
+  $app->get('/getinfo', getinfo);
   $app->get('/liststreams', liststreams);
   $app->post('/addjacker', addjacker);
 
