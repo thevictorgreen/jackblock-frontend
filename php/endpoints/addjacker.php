@@ -14,18 +14,31 @@
      public $image;
      public $imageId;
      public $firstName;
+     public $lastName;
+     public $dob;
+     public $height;
+     public $weight;
 
-     function __construct($image,$imageId,$firstName) {
+     function __construct($image,$imageId,$firstName,$lastName,$dob,$height,$weight) {
        $this->image = $image;
        $this->imageId = $imageId;
        $this->firstName = $firstName;
+       $this->lastName = $lastName;
+       $this->dob = $dob;
+       $this->height = $height;
+       $this->weight = $weight;
      }
    }
 
-   $image = $request->getParsedBody()['image'];
-   $imageId = $request->getParsedBody()['imageId'];
+   $image     = $request->getParsedBody()['image'];
+   $imageId   = $request->getParsedBody()['imageId'];
    $firstName = $request->getParsedBody()['firstName'];
-   $jacker = new Jacker($image,$imageId,$firstName);
+   $lastName  = $request->getParsedBody()['lastName'];
+   $dob       = $request->getParsedBody()['dob'];
+   $height    = $request->getParsedBody()['height'];
+   $weight    = $request->getParsedBody()['weight'];
+
+   $jacker = new Jacker($image,$imageId,$firstName,$lastName,$dob,$height,$weight);
 
    $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
    $lines = explode(" ",$raw_hex);
