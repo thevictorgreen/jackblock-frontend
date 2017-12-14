@@ -72,7 +72,7 @@
    curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
    curl_setopt( $curl, CURLOPT_POST, true );
    //curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"getinfo","params":[],"id":1,"chain_name":"Skynet"}' );
-   curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"publish","params":["washington-dc_jackers",\"" . $jacker_key . "\",\"" . $jacker_hex . "\"],"id":1,"chain_name":"Skynet"}' );
+   curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"publish","params":["washington-dc_jackers"," . $jacker_key . "," . $jacker_hex . "],"id":1,"chain_name":"Skynet"}' );
    curl_setopt( $curl, CURLOPT_HTTPHEADER, array('Content-Type: text/plain') );
    $curl_response = curl_exec($curl);
 
