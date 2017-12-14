@@ -9,7 +9,11 @@
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
 
-   echo json_encode( $request->getParsedBody()['imageId'] );
+   $response = shell_exec('./utils/convertJson2Hex.sh');
+
+   echo json_encode( $response );
+
+   //echo json_encode( $request->getParsedBody()['imageId'] );
 
    exit;
 
