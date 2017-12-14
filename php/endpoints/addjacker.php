@@ -28,7 +28,7 @@
    $jacker = new Jacker($image,$imageId,$firstName);
 
    $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
-   $lines = explode($raw_hex);
+   $lines = explode(" ",$raw_hex);
    $hex = "";
 
    foreach ($raw_hex as $key) {
