@@ -9,13 +9,13 @@
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
 
-   $response = shell_exec('./utils/convertJson2Hex.sh');
+   // $item = $request->getParsedBody()['gititem'];
 
-   echo json_encode( $response );
+   $hex = shell_exec('./endpoints/utils/convertJson2Hex.sh');
 
-   //echo json_encode( $request->getParsedBody()['imageId'] );
+   $response->getBody()->write( $hex );
 
-   exit;
+   json_encode( $response );
 
  }
 
