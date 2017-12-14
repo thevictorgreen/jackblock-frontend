@@ -15,16 +15,17 @@
      public $imageId;
      public $firstName;
 
-     function Jacker() {
-
+     function __construct($image,$imageId,$firstName) {
+       $this->image = $image;
+       $this->imageId = $imageId;
+       $this->firstName = $firstName;
      }
    }
 
-   $jacker = new Jacker();
-
-   $jacker.image = $request->getParsedBody()['image'];
-   $jacker.imageId = $request->getParsedBody()['imageId'];
-   $jacker.firstName = $request->getParsedBody()['firstName'];
+   $image = $request->getParsedBody()['image'];
+   $imageId = $request->getParsedBody()['imageId'];
+   $firstName = $request->getParsedBody()['firstName'];
+   $jacker = new Jacker($image,$imageId,$firstName);
 
    $hex = shell_exec('./endpoints/utils/convertJson2Hex.sh');
 
