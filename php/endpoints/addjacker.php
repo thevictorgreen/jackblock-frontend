@@ -32,7 +32,7 @@
 
    $image     = $request->getParsedBody()['image'];
    $imgParts  = explode(".",$image);
-   $imageType = $imageType[1];
+   $imageType = $imgParts[1];
    $imageId   = $request->getParsedBody()['imageId'];
    $firstName = $request->getParsedBody()['firstName'];
    $lastName  = $request->getParsedBody()['lastName'];
