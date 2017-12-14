@@ -9,7 +9,7 @@
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
 
-   $image = $request->getAttribute('image');
+   $image = $request->getParsedBody()['image'];
 
    $hex = shell_exec('./endpoints/utils/convertJson2Hex.sh');
 
