@@ -46,13 +46,13 @@
 
    $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
    $lines = explode(" ",$raw_hex);
-   $hex = "";
+   $jacker_hex = "";
 
    foreach ($lines as $line) {
-     $hex .= $line;
+     $jacker_hex .= $line;
    }
 
-   $response->getBody()->write( json_encode( $hex ) );
+   $response->getBody()->write( json_encode( $jacker_hex ) );
 
  }
 
