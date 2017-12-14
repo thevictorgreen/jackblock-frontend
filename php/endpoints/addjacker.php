@@ -3,22 +3,22 @@
  use \Psr\Http\Message\ServerRequestInterface as Request;
  use \Psr\Http\Message\ResponseInterface as Response;
 
- class Jacker {
-
-   public $image;
-   public $imageId;
-   public $firstName;
-
-   function Jacker() {
-
-   }
- }
-
 
  function addjacker( Request $request, Response $response ) {
 
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
+
+   class Jacker {
+
+     public $image;
+     public $imageId;
+     public $firstName;
+
+     function Jacker() {
+
+     }
+   }
 
    $jacker = new Jacker();
 
