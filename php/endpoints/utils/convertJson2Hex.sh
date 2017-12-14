@@ -1,4 +1,4 @@
 #!/bin/bash
 
-result=`echo '{"name":"Izzo","sport":"IT"}' | xxd -p`
+result=`echo '${1}' | xxd -p`
 echo $result
