@@ -40,6 +40,8 @@
    $height    = $request->getParsedBody()['height'];
    $weight    = $request->getParsedBody()['weight'];
 
+   $jacker_key = "";
+   $jacker_key .= $lastName . "-" . $firstName . "-" . $dob;
    $jacker = new Jacker($imageType,$imageId,$firstName,$lastName,$dob,$height,$weight);
 
    $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
