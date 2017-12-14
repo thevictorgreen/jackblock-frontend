@@ -31,8 +31,8 @@
    $lines = explode(" ",$raw_hex);
    $hex = "";
 
-   foreach ($raw_hex as $key) {
-     $hex .= $key;
+   foreach ($lines as $line) {
+     $hex .= $line;
    }
 
    $response->getBody()->write( json_encode( $hex ) );
