@@ -9,7 +9,7 @@
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
 
-   echo json_encode( $request->getParsedBody()['book_name'] );
+   echo json_encode( $request->getParsedBody()['imageId'] );
 
    exit;
 
