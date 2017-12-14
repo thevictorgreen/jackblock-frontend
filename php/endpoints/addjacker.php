@@ -4,10 +4,13 @@
  use \Psr\Http\Message\ResponseInterface as Response;
 
  class Jacker {
+
+   public $image;
+   public $imageId;
+   public $firstName;
+
    function Jacker() {
-     $this->image = "";
-     $this->imageId = "";
-     $this->firstName = "";
+
    }
  }
 
