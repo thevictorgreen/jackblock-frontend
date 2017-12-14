@@ -27,7 +27,13 @@
    $firstName = $request->getParsedBody()['firstName'];
    $jacker = new Jacker($image,$imageId,$firstName);
 
-   $hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
+   $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
+   $lines = explode($raw_hex);
+   $hex = "";
+
+   foreach ($raw_hex as $key) {
+     $hex .= $key;
+   }
 
    $response->getBody()->write( json_encode( $hex ) );
 
