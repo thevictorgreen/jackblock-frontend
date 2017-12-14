@@ -52,8 +52,8 @@
      $jacker_hex .= $line;
    }
 
-   //$response->getBody()->write( json_encode( $jacker_hex ) );
-   $response->getBody()->write( json_encode( saveJacker($jacker_key,$jacker_hex) ) );
+   $response->getBody()->write( json_encode( $jacker_hex ) );
+   //$response->getBody()->write( json_encode( saveJacker($jacker_key,$jacker_hex) ) );
 
    //$test = '{"doata"'  . $jacker_key . '"more"}';
 
