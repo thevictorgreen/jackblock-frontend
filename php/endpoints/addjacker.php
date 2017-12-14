@@ -48,7 +48,8 @@
      $hex .= $line;
    }
 
-   $response->getBody()->write( json_encode( $hex ) );
+   //$response->getBody()->write( json_encode( $hex ) );
+   $response->getBody()->write( json_encode( '{image:perp1.jpg,imageId:Zn58IAgY2VBy9kV0I5Hsqydj,firstName:Victor,lastName:Green,dob:02-01-1976,height:5ft 11in,weight:170lbs}' ) );
 
  }
 
