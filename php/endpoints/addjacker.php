@@ -53,12 +53,14 @@
    }
 
    //$response->getBody()->write( json_encode( $jacker_hex ) );
-   $response->getBody()->write( json_encode( saveJacker() ) );
+   $response->getBody()->write( json_encode( saveJacker($jacker_key,$jacker_hex) ) );
+
+   //$test = '{"doata \"" . $jacker_key . "\"more"}';
 
  }
 
 
- function saveJacker() {
+ function saveJacker($jacker_key,$jacker_hex) {
 
    $service_url = 'http://blockchain:8000';
    $credentials = "privateblock:password";
@@ -69,7 +71,8 @@
    curl_setopt( $curl, CURLOPT_URL, $service_url );
    curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
    curl_setopt( $curl, CURLOPT_POST, true );
-   curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"getinfo","params":[],"id":1,"chain_name":"Skynet"}' );
+   //curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"getinfo","params":[],"id":1,"chain_name":"Skynet"}' );
+   curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"publish","params":["washington-dc_jackers",\"" . $jacker_key . "\",\"" . $jacker_hex . "\"],"id":1,"chain_name":"Skynet"}' );
    curl_setopt( $curl, CURLOPT_HTTPHEADER, array('Content-Type: text/plain') );
    $curl_response = curl_exec($curl);
 
@@ -82,5 +85,4 @@
    curl_close($curl);
    return $curl_response;
  }
-
 ?>
