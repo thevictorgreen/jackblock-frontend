@@ -15,7 +15,7 @@
 
    $response->getBody()->write( $hex );
 
-   json_encode( $hex );
+   json_encode( '{"test":"test"}' );
 
  }
 
