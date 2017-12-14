@@ -13,9 +13,9 @@
 
    $hex = shell_exec('./endpoints/utils/convertJson2Hex.sh');
 
-   $response->getBody()->write( $hex );
+   //$response->getBody()->write( $hex );
 
-   json_encode( '{"test":"test"}' );
+   //json_encode( '{"test":"test"}' );
 
  }
 
