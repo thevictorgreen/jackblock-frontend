@@ -1,4 +1,4 @@
 #!/bin/bash
 
-result=`echo '${1}' | xxd -p`
+result=`echo ${1} | xxd -p`
 echo $result
