@@ -11,7 +11,7 @@
 
    class Jacker {
 
-     public $image;
+     public $imageType;
      public $imageId;
      public $firstName;
      public $lastName;
@@ -19,8 +19,8 @@
      public $height;
      public $weight;
 
-     function __construct($image,$imageId,$firstName,$lastName,$dob,$height,$weight) {
-       $this->image = $image;
+     function __construct($imageType,$imageId,$firstName,$lastName,$dob,$height,$weight) {
+       $this->imageType = $imageType;
        $this->imageId = $imageId;
        $this->firstName = $firstName;
        $this->lastName = $lastName;
@@ -31,6 +31,8 @@
    }
 
    $image     = $request->getParsedBody()['image'];
+   $imgParts  = explode(".",$image);
+   $imageType = $imageType[1];
    $imageId   = $request->getParsedBody()['imageId'];
    $firstName = $request->getParsedBody()['firstName'];
    $lastName  = $request->getParsedBody()['lastName'];
@@ -38,7 +40,7 @@
    $height    = $request->getParsedBody()['height'];
    $weight    = $request->getParsedBody()['weight'];
 
-   $jacker = new Jacker($image,$imageId,$firstName,$lastName,$dob,$height,$weight);
+   $jacker = new Jacker($imageType,$imageId,$firstName,$lastName,$dob,$height,$weight);
 
    $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . json_encode( $jacker ));
    $lines = explode(" ",$raw_hex);
@@ -48,8 +50,7 @@
      $hex .= $line;
    }
 
-   //$response->getBody()->write( json_encode( $hex ) );
-   $response->getBody()->write( json_encode( '{image:perp1.jpg,imageId:Zn58IAgY2VBy9kV0I5Hsqydj,firstName:Victor,lastName:Green,dob:02-01-1976,height:5ft 11in,weight:170lbs}' ) );
+   $response->getBody()->write( json_encode( $hex ) );
 
  }
 
