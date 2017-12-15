@@ -4,7 +4,7 @@
  use \Psr\Http\Message\ResponseInterface as Response;
 
 
- function addjacker( Request $request, Response $response ) {
+ function addjackermugshot( Request $request, Response $response ) {
 
    header('Content-type: application/json');
    header('Access-Control-Allow-Origin: *');
@@ -54,7 +54,7 @@
    }
 
    $jacker_encoded = trim( $jacker_hex );
-   $result1 = saveJacker($jacker_key,$jacker_encoded);
+   //$result1 = saveJacker($jacker_key,$jacker_encoded);
    // End Jacker Data
 
    // Begin Jacker Mugshot Data
@@ -70,10 +70,10 @@
 
    $jackerMugshot_encoded = trim( $jacker_hex );
    //$result1 = saveJacker($jacker_key,$jackerMugshot_encoded);
-   //$result2 = saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded);
+   $result2 = saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded);
    // End Jacker Mugshot Data
 
-   $response->getBody()->write( json_encode( '{"status":"success","result":"jacker-added"}' ) );
+   $response->getBody()->write( json_encode( '{"status":"success","result":"mugshot-added"}' ) );
 
  }
 

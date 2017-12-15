@@ -8,6 +8,7 @@
   require './endpoints/getinfo.php';
   require './endpoints/liststreams.php';
   require './endpoints/addjacker.php';
+  require './endpoints/addjackermugshot.php';
 
   // IMPORT
   require './vendor/autoload.php';
@@ -20,6 +21,7 @@
   $app->get('/getinfo', getinfo);
   $app->get('/liststreams', liststreams);
   $app->post('/addjacker', addjacker);
+  $app->post('/addjackermugshot', addjackermugshot);
 
 
 
