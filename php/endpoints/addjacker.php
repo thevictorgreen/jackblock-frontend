@@ -40,6 +40,7 @@
    $height    = $request->getParsedBody()['height'];
    $weight    = $request->getParsedBody()['weight'];
 
+   // Begin Jacker Data
    $jacker_key = "";
    $jacker_key .= $lastName . "-" . $firstName . "-" . $dob;
    $jacker = new Jacker($imageType,$imageId,$firstName,$lastName,$dob,$height,$weight);
@@ -52,12 +53,16 @@
      $jacker_hex .= $line;
    }
 
-   //$response->getBody()->write( json_encode( $jacker_hex ) );
-
    $jacker_encoded = trim( $jacker_hex );
-   $response->getBody()->write( json_encode( saveJacker($jacker_key,$jacker_encoded) ) );
+   // saveJacker($jacker_key,$jacker_encoded);
+   // End Jacker Data
 
-   //$test = '{"doata"'  . $jacker_key . '"more"}';
+   // Begin Jacker Mugshot Data
+   $jackerMugshot_image = "./uploads/perp1.jpg";
+   $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . $jackerMugshot_image );
+   // End Jacker Mugshot Data
+
+   $response->getBody()->write( json_encode( $raw_hex ) );
 
  }
 
@@ -73,7 +78,6 @@
    curl_setopt( $curl, CURLOPT_URL, $service_url );
    curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
    curl_setopt( $curl, CURLOPT_POST, true );
-   //curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"getinfo","params":[],"id":1,"chain_name":"Skynet"}' );
    curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"publish","params":["washington-dc_jackers","'.$jacker_key.'","'.$jacker_encoded.'"],"id":1,"chain_name":"Skynet"}' );
    curl_setopt( $curl, CURLOPT_HTTPHEADER, array('Content-Type: text/plain') );
    $curl_response = curl_exec($curl);
@@ -87,4 +91,31 @@
    curl_close($curl);
    return $curl_response;
  }
+
+
+ function saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded) {
+
+   $service_url = 'http://blockchain:8000';
+   $credentials = "privateblock:password";
+
+   $curl = curl_init();
+   curl_setopt( $curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );
+   curl_setopt( $curl, CURLOPT_USERPWD, $credentials );
+   curl_setopt( $curl, CURLOPT_URL, $service_url );
+   curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+   curl_setopt( $curl, CURLOPT_POST, true );
+   curl_setopt( $curl, CURLOPT_POSTFIELDS, '{"method":"publish","params":["washington-dc_mugshots","'.$jackerMugshot_key.'","'.$jackerMugshot_encoded.'"],"id":1,"chain_name":"Skynet"}' );
+   curl_setopt( $curl, CURLOPT_HTTPHEADER, array('Content-Type: text/plain') );
+   $curl_response = curl_exec($curl);
+
+   if ($curl_response === false) {
+       $info = curl_getinfo($curl);
+       curl_close($curl);
+       die('error occured during curl exec. Additioanl info: ' . var_export($info));
+   }
+
+   curl_close($curl);
+   return $curl_response;
+ }
+
 ?>
