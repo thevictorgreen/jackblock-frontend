@@ -54,7 +54,7 @@
    }
 
    $jacker_encoded = trim( $jacker_hex );
-    saveJacker($jacker_key,$jacker_encoded);
+   $result1 = saveJacker($jacker_key,$jacker_encoded);
    // End Jacker Data
 
    // Begin Jacker Mugshot Data
@@ -69,10 +69,10 @@
    }
 
    $jackerMugshot_encoded = trim( $jacker_hex );
-   saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded);
+   $result2 = saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded);
    // End Jacker Mugshot Data
 
-   $response->getBody()->write( json_encode( '{"status":"success"}' ) );
+   $response->getBody()->write( json_encode( '{"status":"success","result1":"'.$result1.'","result2":"'.$result2.'","jacker-mugshot":"'.$jackerMugshot_encoded.'"}' ) );
 
  }
 
