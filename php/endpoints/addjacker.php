@@ -58,7 +58,8 @@
    // End Jacker Data
 
    // Begin Jacker Mugshot Data
-   $jackerMugshot_image = "./uploads/perp1.jpg";
+   $jackerMugshot_key .= $imageId . "." . $imageType;
+   $jackerMugshot_image = "./uploads/" . $image;
    $raw_hex = shell_exec('./endpoints/utils/convertImg2Hex.sh ' . $jackerMugshot_image );
    $lines = explode(" ",$raw_hex);
    $jacker_hex = "";
