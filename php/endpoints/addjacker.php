@@ -54,7 +54,7 @@
    }
 
    $jacker_encoded = trim( $jacker_hex );
-   $result1 = saveJacker($jacker_key,$jacker_encoded);
+   //$result1 = saveJacker($jacker_key,$jacker_encoded);
    // End Jacker Data
 
    // Begin Jacker Mugshot Data
@@ -69,6 +69,7 @@
    }
 
    $jackerMugshot_encoded = trim( $jacker_hex );
+   $result1 = saveJacker($jacker_key,$jackerMugshot_encoded);
    $result2 = saveJackerMugshot($jackerMugshot_key,$jackerMugshot_encoded);
    // End Jacker Mugshot Data
 
