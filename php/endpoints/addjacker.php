@@ -60,9 +60,16 @@
    // Begin Jacker Mugshot Data
    $jackerMugshot_image = "./uploads/perp1.jpg";
    $raw_hex = shell_exec('./endpoints/utils/convertImg2Hex.sh ' . $jackerMugshot_image );
+   $jacker_hex = "";
+
+   foreach ($lines as $line) {
+     $jacker_hex .= $line;
+   }
+
+   $jackerMugshot_encoded = trim( $jacker_hex );
    // End Jacker Mugshot Data
 
-   $response->getBody()->write( json_encode( $raw_hex ) );
+   $response->getBody()->write( json_encode( $jackerMugshot_encoded ) );
 
  }
 
