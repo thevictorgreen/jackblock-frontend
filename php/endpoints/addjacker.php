@@ -59,7 +59,7 @@
 
    // Begin Jacker Mugshot Data
    $jackerMugshot_image = "./uploads/perp1.jpg";
-   $raw_hex = shell_exec('./endpoints/utils/convertJson2Hex.sh ' . $jackerMugshot_image );
+   $raw_hex = shell_exec('./endpoints/utils/convertImg2Hex.sh ' . $jackerMugshot_image );
    // End Jacker Mugshot Data
 
    $response->getBody()->write( json_encode( $raw_hex ) );
