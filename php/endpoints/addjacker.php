@@ -60,6 +60,7 @@
    // Begin Jacker Mugshot Data
    $jackerMugshot_image = "./uploads/perp1.jpg";
    $raw_hex = shell_exec('./endpoints/utils/convertImg2Hex.sh ' . $jackerMugshot_image );
+   $lines = explode(" ",$raw_hex);
    $jacker_hex = "";
 
    foreach ($lines as $line) {
